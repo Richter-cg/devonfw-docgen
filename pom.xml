@@ -2,8 +2,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>io.oasp</groupId>
-  <artifactId>oasp-docgen</artifactId>
+  <groupId>com.capgemini.devonfw</groupId>
+  <artifactId>devonfw-docgen</artifactId>
   <version>1.0.0</version>
   <packaging>pom</packaging>
   <name>${project.artifactId}</name>
@@ -175,6 +175,13 @@
   </build>
 
   <profiles>
+    <profile>
+      <id>devon4sencha</id>
+      <properties>
+        <oasp.repo>devon4sencha</oasp.repo>
+        <oasp.wiki.page>DEVON4SENCHA</oasp.wiki.page>
+      </properties>
+    </profile>
     <profile>
       <id>oasp4j</id>
       <properties>
