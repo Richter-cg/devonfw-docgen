@@ -47,6 +47,10 @@ under the License.
 	<xsl:param name="page.margin.bottom" select="'1cm'"/>
 	<xsl:param name="title.margin.left" select="'0cm'"/>
 
+  <xsl:variable name="Copyright">
+    <xsl:text>Copyright &#xA9; 2015-</xsl:text><xsl:value-of select="1900 + date:getYear(date:new())" /><xsl:text> Capgemini</xsl:text>
+  </xsl:variable>
+
 	<!-- allow break across pages -->
 	<xsl:attribute-set name="formal.object.properties">
 		<xsl:attribute name="keep-together.within-column">auto</xsl:attribute>
@@ -56,37 +60,45 @@ under the License.
 
 	<xsl:template name="book.titlepage.recto">
 		<fo:block>
-			<fo:table table-layout="fixed" width="175mm">
-				<fo:table-column column-width="175mm"/>
+			<fo:table>
+				<fo:table-column/>
 				<fo:table-body>
 					<fo:table-row>
-						<fo:table-cell text-align="center">
+						<fo:table-cell text-align="center" vertical-align="middle">
 							<fo:block>
-								<fo:external-graphic src="images/logo.png" width="240px"
+								<fo:external-graphic src="images/logo.png" width="240px" padding-before="20em"
 									height="auto" content-width="scale-to-fit"
 									content-height="scale-to-fit"
 									content-type="content-type:image/png" text-align="center"
 								/>
 							</fo:block>
-							<fo:block font-family="Helvetica" font-size="20pt" font-weight="bold" padding="10mm">
-								<xsl:value-of select="bookinfo/title"/>
-							</fo:block>
+              <fo:block font-family="Helvetica" font-size="12pt" padding-before="1em">
+                <xsl:value-of select="bookinfo/date"/>
+              </fo:block>
+              <fo:block font-family="Helvetica" font-size="10pt" padding-before="2em">
+                <xsl:value-of select="$Copyright"/>
+              </fo:block>
+
+              <fo:block font-family="Helvetica" font-size="8pt" padding-before="2em">
+                <xsl:value-of select="bookinfo/legalnotice"/>
+              </fo:block>
+              <!--
 							<fo:block font-family="Helvetica" font-size="14pt" padding-before="2mm">
 								<xsl:value-of select="bookinfo/subtitle"/>
 							</fo:block>
 							<fo:block font-family="Helvetica" font-size="14pt" padding="2mm">
 								<xsl:value-of select="bookinfo/releaseinfo"/>
-							</fo:block>
+							</fo:block> -->
 						</fo:table-cell>
 					</fo:table-row>
-					<fo:table-row>
+					<!-- <fo:table-row>
 						<fo:table-cell text-align="center">
 							<fo:block font-family="Helvetica" font-size="14pt" padding="5mm">
 								<xsl:value-of select="bookinfo/pubdate"/>
 							</fo:block>
 						</fo:table-cell>
-					</fo:table-row>
-					<fo:table-row>
+					</fo:table-row> -->
+					<!-- <fo:table-row>
 						<fo:table-cell text-align="center">
 							<fo:block font-family="Helvetica" font-size="10pt" padding="10mm">
 								<xsl:for-each select="bookinfo/authorgroup/author">
@@ -100,16 +112,8 @@ under the License.
 							<fo:block font-family="Helvetica" font-size="10pt" padding="5mm">
 								<xsl:value-of select="bookinfo/pubdate"/>
 							</fo:block>
-
-							<fo:block font-family="Helvetica" font-size="10pt" padding="5mm" padding-before="25em">
-								<xsl:text>Copyright &#xA9; 2014-</xsl:text><xsl:value-of select="1900 + date:getYear(date:new())" /><xsl:text> the OASP team</xsl:text>
-							</fo:block>
-
-							<fo:block font-family="Helvetica" font-size="8pt" padding="1mm">
-								<xsl:value-of select="bookinfo/legalnotice"/>
-							</fo:block>
 						</fo:table-cell>
-					</fo:table-row>
+					</fo:table-row> -->
 				</fo:table-body>
 			</fo:table>
 		</fo:block>
@@ -144,7 +148,7 @@ under the License.
 		<xsl:variable name="Version">
 			<xsl:choose>
 				<xsl:when test="//title">
-					<xsl:value-of select="//title"/><xsl:text> </xsl:text>
+					<xsl:value-of select="//title"/><xsl:text> </xsl:text><xsl:value-of select="bookinfo/date"/>
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:text>please define title in your docbook file!</xsl:text>
@@ -167,8 +171,28 @@ under the License.
 			<xsl:when test="$pageclass='titlepage'">
 			</xsl:when>
 
+			<xsl:when test="$position='left'">
+				<fo:block margin-left="5em">
+          <fo:external-graphic src="images/topLeftLogo.png" width="100px"
+            height="auto" content-width="scale-to-fit"
+            content-height="scale-to-fit"
+            content-type="content-type:image/png" text-align="left"
+          />
+        </fo:block>
+			</xsl:when>
+
 			<xsl:when test="$position='center'">
 				<xsl:value-of select="$Version"/>
+			</xsl:when>
+
+			<xsl:when test="$position='right'">
+				<fo:block margin-right="5em">
+          <fo:external-graphic src="images/topRightLogo.png" width="100px"
+            height="auto" content-width="scale-to-fit"
+            content-height="scale-to-fit"
+            content-type="content-type:image/png" text-align="left"
+          />
+        </fo:block>
 			</xsl:when>
 
 			<xsl:otherwise>
@@ -182,6 +206,8 @@ under the License.
 			<xsl:value-of select="$body.font.family"/>
 		</xsl:attribute>
 		<xsl:attribute name="font-size">8pt</xsl:attribute>
+    <xsl:attribute name="margin-left">-5em</xsl:attribute>
+    <xsl:attribute name="margin-right">-5em</xsl:attribute>
 	</xsl:attribute-set>
 
 	<xsl:template name="footer.content">
@@ -220,15 +246,17 @@ under the License.
 			</xsl:when>
 
 			<xsl:when test="$double.sided != 0 and $sequence = 'even' and $position='left'">
-				<fo:page-number/>
+				<fo:page-number margin-right="5em"/>
 			</xsl:when>
 
 			<xsl:when test="$double.sided != 0 and $sequence = 'odd' and $position='right'">
-				<fo:page-number/>
+				<fo:page-number margin-right="5em"/>
 			</xsl:when>
 
 			<xsl:when test="$double.sided = 0 and $position='right'">
-				<fo:page-number/>
+        <fo:block margin-right="5em">
+				  <fo:page-number/>
+        </fo:block>
 			</xsl:when>
 
 			<xsl:when test="$double.sided != 0 and $sequence = 'odd' and $position='left'">
@@ -240,7 +268,13 @@ under the License.
 			</xsl:when>
 
 			<xsl:when test="$double.sided = 0 and $position='left'">
-				<xsl:value-of select="$Version"/>
+				<fo:block margin-left="5em">
+          <fo:external-graphic src="images/capgeminiLogo.jpg" width="100px"
+            height="auto" content-width="scale-to-fit"
+            content-height="scale-to-fit"
+            content-type="content-type:image/jpeg" text-align="left"
+          />
+        </fo:block>
 			</xsl:when>
 
 			<xsl:when test="$position='center'">
@@ -253,11 +287,7 @@ under the License.
 	</xsl:template>
 
   <xsl:template name="footer.content.title">
-    <xsl:variable name="Text">
-      This documentation is licensed under the
-      <link xlink:url="http://creativecommons.org/licenses/by-nd/4.0/">Creative Commons License (Attribution-NoDerivatives 4.0 International).</link>
-    </xsl:variable>
-    <xsl:value-of select="$Text"/>
+    <xsl:value-of select="$Copyright"/>
   </xsl:template>
 
 	<xsl:template match="processing-instruction('hard-pagebreak')">
