@@ -176,6 +176,13 @@
 
   <profiles>
     <profile>
+      <id>devon</id>
+      <properties>
+        <oasp.repo>devon</oasp.repo>
+        <oasp.wiki.page>DEVON</oasp.wiki.page>
+      </properties>
+    </profile>
+    <profile>
       <id>devon4sencha</id>
       <properties>
         <oasp.repo>devon4sencha</oasp.repo>
