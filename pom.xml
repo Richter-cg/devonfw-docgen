@@ -232,5 +232,12 @@
         <oasp.pdf.customization>cobigen-pdf.xsl</oasp.pdf.customization>
       </properties>
     </profile>
+    <profile>
+      <id>oasp4mobile-tukl</id>
+      <properties>
+        <oasp.repo>draft-tukl-oasp4mobile</oasp.repo>
+        <oasp.wiki.page>OASP4Mobile</oasp.wiki.page>
+      </properties>
+    </profile>
   </profiles>
 </project>
