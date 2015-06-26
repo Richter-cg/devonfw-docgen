@@ -12,10 +12,12 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <!-- Default values -->
-    <oasp.repo>oasp4j</oasp.repo>
+    <!-- Default values: rewrite them passing the values as parameters, p.e.: -Drepo=devon -Dpage=DEVON-->
+    <repo>oasp4j</repo>
+    <page>OASP4J</page>
+    <oasp.repo>${repo}</oasp.repo>
+    <oasp.wiki.page>${page}</oasp.wiki.page>
     <oasp.wiki.folder>${oasp.repo}.wiki</oasp.wiki.folder>
-    <oasp.wiki.page>OASP4J</oasp.wiki.page>
     <oasp.asciidoc.source>${basedir}/../${oasp.wiki.folder}/</oasp.asciidoc.source>
     <oasp.asciidoc.target>${basedir}/target/asciidoc/</oasp.asciidoc.target>
     <oasp.external.images>${basedir}/target/images/</oasp.external.images>
@@ -150,7 +152,7 @@
             </goals>
             <phase>generate-resources</phase>
           </execution>
-          <execution>
+<!--           <execution>
             <id>html</id>
             <goals>
               <goal>generate-html</goal>
@@ -165,58 +167,16 @@
             <phase>generate-resources</phase>
             <configuration>
 
-              <targetDirectory>${basedir}/target/generated-docs/epub</targetDirectory>
+              <targetDirectory>${basedir}/target/generated-docs/epub</targetDirectory>-->
               <!-- <epubCustomization>${basedir}/src/main/docbook/xsl/epub.xsl</epubCustomization> -->
-            </configuration>
-          </execution>
+ <!--           </configuration>
+          </execution> -->
         </executions>
       </plugin>
     </plugins>
   </build>
 
   <profiles>
-    <profile>
-      <id>devon4sencha</id>
-      <properties>
-        <oasp.repo>devon4sencha</oasp.repo>
-        <oasp.wiki.page>DEVON4SENCHA</oasp.wiki.page>
-      </properties>
-    </profile>
-    <profile>
-      <id>oasp4j</id>
-      <properties>
-        <oasp.repo>oasp4j</oasp.repo>
-        <oasp.wiki.page>OASP4J</oasp.wiki.page>
-      </properties>
-    </profile>
-    <profile>
-      <id>oasp4j-tutorial</id>
-      <properties>
-        <oasp.repo>oasp4j</oasp.repo>
-        <oasp.wiki.page>OASP4J-Tutorial</oasp.wiki.page>
-      </properties>
-    </profile>
-    <profile>
-      <id>oasp4j-ide</id>
-      <properties>
-        <oasp.repo>oasp4j-ide</oasp.repo>
-        <oasp.wiki.page>OASP4J-IDE</oasp.wiki.page>
-      </properties>
-    </profile>
-    <profile>
-      <id>oasp4js</id>
-      <properties>
-        <oasp.repo>oasp4js</oasp.repo>
-        <oasp.wiki.page>OASP4JS</oasp.wiki.page>
-      </properties>
-    </profile>
-    <profile>
-      <id>oasp4js-tutorial</id>
-      <properties>
-        <oasp.repo>oasp4js</oasp.repo>
-        <oasp.wiki.page>OASP4JS-Tutorial</oasp.wiki.page>
-      </properties>
-    </profile>
     <profile>
       <id>cobigen</id>
       <properties>
