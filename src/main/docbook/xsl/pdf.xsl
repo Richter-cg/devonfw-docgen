@@ -48,7 +48,7 @@ under the License.
 	<xsl:param name="title.margin.left" select="'0cm'"/>
 
   <xsl:variable name="Copyright">
-    <xsl:text>Copyright &#xA9; 2015-</xsl:text><xsl:value-of select="1900 + date:getYear(date:new())" /><xsl:text> Capgemini</xsl:text>
+    <xsl:text>Copyright &#xA9; 2015-</xsl:text><xsl:value-of select="1900 + date:getYear(date:new())" /><xsl:text> the DevonFW Team, Capgemini</xsl:text>
   </xsl:variable>
 
 	<!-- allow break across pages -->
