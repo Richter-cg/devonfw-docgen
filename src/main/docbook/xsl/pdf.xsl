@@ -116,14 +116,14 @@ under the License.
 							</fo:block>
 						</fo:table-cell>
 					</fo:table-row>
-					<!-- <fo:table-row>
+					 <fo:table-row>
 						<fo:table-cell text-align="center">
 							<fo:block font-family="Helvetica" font-size="14pt" padding="5mm">
 								<xsl:value-of select="bookinfo/pubdate"/>
 							</fo:block>
 						</fo:table-cell>
-					</fo:table-row> -->
-					<!-- <fo:table-row>
+					</fo:table-row> 
+					<fo:table-row>
 						<fo:table-cell text-align="center">
 							<fo:block font-family="Helvetica" font-size="10pt" padding="10mm">
 								<xsl:for-each select="bookinfo/authorgroup/author">
@@ -136,9 +136,9 @@ under the License.
 
 							<fo:block font-family="Helvetica" font-size="10pt" padding="5mm">
 								<xsl:value-of select="bookinfo/pubdate"/>
-							</fo:block>
+							</fo:block>-->
 						</fo:table-cell>
-					</fo:table-row> -->
+					</fo:table-row> 
 				</fo:table-body>
 			</fo:table>
 		</fo:block>
