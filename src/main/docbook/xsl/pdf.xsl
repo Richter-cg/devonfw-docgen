@@ -51,12 +51,16 @@ under the License.
     <xsl:text>Copyright &#xA9; 2015-</xsl:text><xsl:value-of select="1900 + date:getYear(date:new())" /><xsl:text> the DevonFW Team, Capgemini</xsl:text>
   </xsl:variable>
 
+  <xsl:variable name="Version">
+     <xsl:value-of select="//*[local-name() = 'date']"/>
+  </xsl:variable>
+
   <xsl:variable name="Title">
-     <xsl:call-template name="get.doc.title"/><xsl:text> </xsl:text><xsl:value-of select="//*[local-name() = 'date']"/>
+     <xsl:call-template name="get.doc.title"/>
   </xsl:variable>
 
   <xsl:variable name="HeaderTitle">
-      <xsl:call-template name="get.doc.title"/><xsl:text> </xsl:text><xsl:value-of select="//*[local-name() = 'date']"/>
+      <xsl:value-of select="$Title"/><xsl:text> </xsl:text><xsl:value-of select="$Version"/>
   </xsl:variable>
 
 	<!-- allow break across pages -->
@@ -80,8 +84,11 @@ under the License.
 									content-type="content-type:image/png" text-align="center"
 								/>
 							</fo:block>
-              <fo:block font-family="Helvetica" font-size="12pt" padding-before="1em">
+              <fo:block font-family="Helvetica" font-size="16pt" padding-before="1em" font-weight="bold">
                 <xsl:value-of select="$Title"/>
+              </fo:block>
+              <fo:block font-family="Helvetica" font-size="12pt" padding-before="1em">
+                <xsl:value-of select="$Version"/>
               </fo:block>
               <fo:block font-family="Helvetica" font-size="10pt" padding-before="2em">
                 <xsl:value-of select="$Copyright"/>
@@ -96,11 +103,11 @@ under the License.
 							</fo:block>
 							<fo:block font-family="Helvetica" font-size="14pt" padding="2mm">
 								<xsl:value-of select="bookinfo/releaseinfo"/>
-							</fo:block> 
+							</fo:block>
 						</fo:table-cell>
 					</fo:table-row>
 					<fo:table-row>
-						<fo:table-cell text-align="center">		
+						<fo:table-cell text-align="center">
 							<fo:block font-family="Helvetica" font-size="12pt" padding-before="1em">
 								<xsl:value-of select="bookinfo/date"/>
 							</fo:block>
@@ -122,7 +129,7 @@ under the License.
 								<xsl:value-of select="bookinfo/pubdate"/>
 							</fo:block>
 						</fo:table-cell>
-					</fo:table-row> 
+					</fo:table-row>
 					<fo:table-row>
 						<fo:table-cell text-align="center">
 							<fo:block font-family="Helvetica" font-size="10pt" padding="10mm">
@@ -138,7 +145,7 @@ under the License.
 								<xsl:value-of select="bookinfo/pubdate"/>
 							</fo:block>-->
 						</fo:table-cell>
-					</fo:table-row> 
+					</fo:table-row>
 				</fo:table-body>
 			</fo:table>
 		</fo:block>
