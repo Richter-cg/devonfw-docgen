@@ -184,13 +184,8 @@ under the License.
 						<xsl:value-of select="$HeaderTitle"/>
 					</xsl:when>
 					<xsl:otherwise>
-            <xsl:value-of select="$HeaderTitle"/>
 					</xsl:otherwise>
 				</xsl:choose>
-			</xsl:when>
-
-			<xsl:when test="$pageclass='titlepage'">
-        <xsl:value-of select="$HeaderTitle"/>
 			</xsl:when>
 
 			<xsl:when test="$position='left'">
@@ -218,7 +213,6 @@ under the License.
 			</xsl:when>
 
 			<xsl:otherwise>
-        <xsl:value-of select="$HeaderTitle"/>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
