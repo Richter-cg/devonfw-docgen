@@ -51,6 +51,14 @@ under the License.
     <xsl:text>Copyright &#xA9; 2015-</xsl:text><xsl:value-of select="1900 + date:getYear(date:new())" /><xsl:text> Capgemini</xsl:text>
   </xsl:variable>
 
+  <xsl:variable name="Title">
+     <xsl:call-template name="get.doc.title"/><xsl:text> </xsl:text><xsl:value-of select="//*[local-name() = 'date']"/>
+  </xsl:variable>
+
+  <xsl:variable name="HeaderTitle">
+      <xsl:call-template name="get.doc.title"/><xsl:text> </xsl:text><xsl:value-of select="//*[local-name() = 'date']"/>
+  </xsl:variable>
+
 	<!-- allow break across pages -->
 	<xsl:attribute-set name="formal.object.properties">
 		<xsl:attribute name="keep-together.within-column">auto</xsl:attribute>
@@ -73,7 +81,7 @@ under the License.
 								/>
 							</fo:block>
               <fo:block font-family="Helvetica" font-size="12pt" padding-before="1em">
-                <xsl:value-of select="bookinfo/date"/>
+                <xsl:value-of select="$Title"/>
               </fo:block>
               <fo:block font-family="Helvetica" font-size="10pt" padding-before="2em">
                 <xsl:value-of select="$Copyright"/>
@@ -145,30 +153,20 @@ under the License.
 		<xsl:param name="position" select="''"/>
 		<xsl:param name="gentext-key" select="''"/>
 
-		<xsl:variable name="Version">
-			<xsl:choose>
-				<xsl:when test="//title">
-					<xsl:value-of select="//title"/><xsl:text> </xsl:text><xsl:value-of select="bookinfo/date"/>
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:text>please define title in your docbook file!</xsl:text>
-				</xsl:otherwise>
-			</xsl:choose>
-		</xsl:variable>
-
 		<xsl:choose>
 			<xsl:when test="$sequence='blank'">
 				<xsl:choose>
 					<xsl:when test="$position='center'">
-						<xsl:value-of select="$Version"/>
+						<xsl:value-of select="$HeaderTitle"/>
 					</xsl:when>
-
 					<xsl:otherwise>
+            <xsl:value-of select="$HeaderTitle"/>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:when>
 
 			<xsl:when test="$pageclass='titlepage'">
+        <xsl:value-of select="$HeaderTitle"/>
 			</xsl:when>
 
 			<xsl:when test="$position='left'">
@@ -182,7 +180,7 @@ under the License.
 			</xsl:when>
 
 			<xsl:when test="$position='center'">
-				<xsl:value-of select="$Version"/>
+				<xsl:value-of select="$HeaderTitle"/>
 			</xsl:when>
 
 			<xsl:when test="$position='right'">
@@ -196,6 +194,7 @@ under the License.
 			</xsl:when>
 
 			<xsl:otherwise>
+        <xsl:value-of select="$HeaderTitle"/>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -260,11 +259,11 @@ under the License.
 			</xsl:when>
 
 			<xsl:when test="$double.sided != 0 and $sequence = 'odd' and $position='left'">
-				<xsl:value-of select="$Version"/>
+
 			</xsl:when>
 
 			<xsl:when test="$double.sided != 0 and $sequence = 'even' and $position='right'">
-				<xsl:value-of select="$Version"/>
+
 			</xsl:when>
 
 			<xsl:when test="$double.sided = 0 and $position='left'">
