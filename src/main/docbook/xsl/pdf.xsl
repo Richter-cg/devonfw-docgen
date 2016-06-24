@@ -48,7 +48,7 @@ under the License.
   <xsl:param name="title.margin.left" select="'0cm'"/>
 
   <xsl:variable name="Copyright">
-    <xsl:text>Copyright &#xA9; 2015-</xsl:text><xsl:value-of select="1900 + date:getYear(date:new())" /><xsl:text> the DevonFW Team, Capgemini</xsl:text>
+    <xsl:text>Copyright &#xA9; 2015-</xsl:text><xsl:value-of select="1900 + date:getYear(date:new())" /><xsl:text> the Devonfw Team, Capgemini</xsl:text>
   </xsl:variable>
 
   <xsl:variable name="Version">
@@ -56,10 +56,16 @@ under the License.
   </xsl:variable>
 
   <xsl:variable name="Title">
+
      <xsl:call-template name="get.doc.title"/>
   </xsl:variable>
 
   <xsl:variable name="HeaderTitle">
+      <fo:external-graphic src="images/logo.png" width="100px" padding-before="20em"
+                  height="auto" content-width="scale-to-fit"
+                  content-height="scale-to-fit"
+                  content-type="content-type:image/png" text-align="left"
+                />
       <xsl:value-of select="$Title"/><xsl:text> </xsl:text><xsl:value-of select="$Version"/>
   </xsl:variable>
 
@@ -78,7 +84,7 @@ under the License.
           <fo:table-row>
             <fo:table-cell text-align="center" vertical-align="middle">
               <fo:block>
-                <fo:external-graphic src="images/logo.png" width="240px" padding-before="20em"
+                <fo:external-graphic src="images/devonfw.png" width="240px" padding-before="20em"
                   height="auto" content-width="scale-to-fit"
                   content-height="scale-to-fit"
                   content-type="content-type:image/png" text-align="center"

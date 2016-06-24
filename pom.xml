@@ -198,7 +198,7 @@
       <properties>
         <oasp.repo>devon-guide</oasp.repo>
         <oasp.wiki.page>DevonGuide</oasp.wiki.page>
-        <oasp.pdf.customization>cobigen-pdf.xsl</oasp.pdf.customization>
+        <oasp.pdf.customization>devonfw-pdf.xsl</oasp.pdf.customization>
       </properties>
     </profile>
   </profiles>
