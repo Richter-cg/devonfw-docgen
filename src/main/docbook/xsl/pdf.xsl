@@ -196,9 +196,9 @@ under the License.
 
       <xsl:when test="$position='left'">
         <fo:block margin-left="5em">
-          <fo:external-graphic src="images/topLeftLogo.png" width="100px"
+          <fo:external-graphic src="images/topLeftLogo.png" width="75px"
             height="auto" content-width="scale-to-fit"
-            content-height="scale-to-fit"
+           
             content-type="content-type:image/png" text-align="left"
           />
         </fo:block>
@@ -210,9 +210,8 @@ under the License.
 
       <xsl:when test="$position='right'">
         <fo:block margin-right="5em">
-          <fo:external-graphic src="images/topRightLogo.png" width="100px"
-            height="auto" content-width="scale-to-fit"
-            content-height="scale-to-fit"
+          <fo:external-graphic src="images/topRightLogo.png" width="75px"
+            height="auto" content-width="scale-to-fit" 
             content-type="content-type:image/png" text-align="left"
           />
         </fo:block>
