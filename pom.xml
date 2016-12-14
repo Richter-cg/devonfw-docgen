@@ -29,16 +29,16 @@
         <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
+        <configuration>
+          <outputDirectory>${oasp4j.asciidoc.target}</outputDirectory>
+          <resources>
+             <resource>
+              <directory>${oasp4j.asciidoc.source}</directory>
+              <filtering>false</filtering>
+             </resource>
+          </resources>
+        </configuration>
         <executions>
-            <configuration>
-              <outputDirectory>${oasp4j.asciidoc.target}</outputDirectory>
-              <resources>
-                <resource>
-                  <directory>${oasp4j.asciidoc.source}</directory>
-                  <filtering>false</filtering>
-                </resource>
-              </resources>
-            </configuration>
           <execution>
             <id>copy-resources</id>
             <phase>validate</phase>
