@@ -30,12 +30,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
         <executions>
-          <execution>
-            <id>copy-resources</id>
-            <phase>validate</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
             <configuration>
               <outputDirectory>${oasp4j.asciidoc.target}</outputDirectory>
               <resources>
@@ -45,6 +39,12 @@
                 </resource>
               </resources>
             </configuration>
+          <execution>
+            <id>copy-resources</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
           </execution>
         </executions>
       </plugin>
