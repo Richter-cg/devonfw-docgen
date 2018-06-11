@@ -32,6 +32,7 @@
   <xsl:param name="body.margin.bottom" select="'1.6cm'"/>
 
   <xsl:template name="footer.content.title">
-    This documentation is subject to the terms and conditions of the Capgemini CobiGen License Agreement.
+    <!-- This documentation is subject to the terms and conditions of the Capgemini CobiGen License Agreement. -->
+    This documentation is licensed under the Creative Commons License (Attribution-NoDerivatives 4.0 International).
   </xsl:template>
 </xsl:stylesheet>
